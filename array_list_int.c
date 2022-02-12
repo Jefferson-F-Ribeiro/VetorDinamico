@@ -15,8 +15,8 @@
  *
  */
 struct array_list_int {
-    int * data;
-    unsigned int size,capacity;
+  int * data;
+  unsigned int size,capacity;
 };
 
 /**
@@ -132,6 +132,9 @@ unsigned int array_list_capacity(array_list_int * list){
  * \todo Implement function
  */
 double array_list_percent_occupied(array_list_int * list){
+  if(array_list_size(list)>0){
+    return (double)(list->size)/(double)(list->capacity);
+  }
   return 0.0;
 }
 

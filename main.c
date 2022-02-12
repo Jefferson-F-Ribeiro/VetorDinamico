@@ -20,7 +20,7 @@ int main(void) {
 
 
   increase_memory(lista);
-
+  printf("ocupado %f",array_list_percent_occupied(lista));
 
 
   for(i=0;i<16;i++){
@@ -28,12 +28,13 @@ int main(void) {
   }
 
   increase_memory(lista);
+  printf("ocupado %f",array_list_percent_occupied(lista));
 
-    for(i=0;i<32;i++){
+  for(i=0;i<32;i++){
     printf("%d\n",array_list_get(lista,i,&erro));
   }
 
-  printf("achou?: %d", array_list_find(lista,4));
-  printf("achou?: %d", array_list_find(lista,64)); 
+  //printf("achou?: %d", array_list_find(lista,4));
+  //printf("achou?: %d", array_list_find(lista,64)); 
   return 0;
 }
