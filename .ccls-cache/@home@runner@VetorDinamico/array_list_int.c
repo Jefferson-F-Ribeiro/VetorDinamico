@@ -8,6 +8,7 @@
 
 #include "array_list_int.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * \brief Struct to store dynamic array.
@@ -26,6 +27,30 @@ struct array_list_int {
  */
 
 int increase_memory(array_list_int *list){
+  int error;
+  printf("size before %d\n", array_list_size(list));
+  array_list_int *new_list = (array_list_int*)malloc(sizeof(array_list_int));
+  new_list->data = (int*)malloc(sizeof(int)*(list->capacity*2));
+  new_list->size = array_list_size(list);
+  new_list->capacity = list->capacity*2;
+
+  for(int i = 0; i<array_list_size(list); i++){
+    array_list_push_back(new_list,array_list_get(list,i,&error));
+  }
+
+  //array_list_pop_back(list);
+  //array_list_pop_back(new_list);
+
+ // free(list->data);
+  //list->data = new_list->data;
+ // new_list->data = NULL;
+
+  //for(int i = 0; i<array_list_size(list); i++){
+  //  printf("cool: %d\n", array_list_get(list,i,&error));
+  //}
+  
+  printf("size after %d\n", array_list_size(new_list));
+  
   return 0;
 }
 

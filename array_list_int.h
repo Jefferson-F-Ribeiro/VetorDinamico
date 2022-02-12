@@ -12,6 +12,8 @@
 
 typedef struct array_list_int array_list_int;
 
+int increase_memory(array_list_int * list);
+
 /**
  * \brief Create a new list of int numbers.
  * 
