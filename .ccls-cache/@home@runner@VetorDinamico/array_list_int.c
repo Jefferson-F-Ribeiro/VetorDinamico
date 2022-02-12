@@ -27,7 +27,7 @@ struct array_list_int {
  */
 
 int increase_memory(array_list_int *list){
-  int error;
+  
   array_list_int *new_list = (array_list_int*)malloc(sizeof(array_list_int));
   new_list->data = (int*)malloc(sizeof(int)*(list->capacity*2));
   new_list->size = array_list_size(list);
@@ -43,8 +43,6 @@ int increase_memory(array_list_int *list){
   list->data = new_list->data;
   new_list->data = NULL;
 
-
-  
   return 0;
 }
 
@@ -99,7 +97,12 @@ unsigned int array_list_size(array_list_int * list){
  * \todo Implement function
  */
 int array_list_find(array_list_int * list, int element){
-  
+
+  for(int i=0;i<array_list_size(list);i++){
+    if(list->data[i] == element){
+      return i;
+    }
+  }
   return -1;
 }
 

@@ -33,5 +33,7 @@ int main(void) {
     printf("%d\n",array_list_get(lista,i,&erro));
   }
 
+  printf("achou?: %d", array_list_find(lista,4));
+  printf("achou?: %d", array_list_find(lista,64)); 
   return 0;
 }
