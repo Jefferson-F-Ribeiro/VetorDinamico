@@ -27,5 +27,11 @@ int main(void) {
     printf("%d\n",array_list_get(lista,i,&erro));
   }
 
+  increase_memory(lista);
+
+    for(i=0;i<32;i++){
+    printf("%d\n",array_list_get(lista,i,&erro));
+  }
+
   return 0;
 }
