@@ -11,7 +11,7 @@ int main(void) {
   printf("%d\n",array_list_get(lista,0,&erro));*/
 
   for(i=0;i<8;i++){
-    array_list_push_back(lista,i*2);
+    array_list_insert_at(lista,i,i*2);
   }
 
   for(i=0;i<8;i++){
@@ -20,18 +20,20 @@ int main(void) {
 
 
   increase_memory(lista);
-  printf("ocupado %f",array_list_percent_occupied(lista));
+  printf("ocupado %f\n",array_list_percent_occupied(lista));
 
 
-  for(i=0;i<16;i++){
+ /* for(i=0;i<16;i++){
     printf("%d\n",array_list_get(lista,i,&erro));
   }
 
   increase_memory(lista);
   printf("ocupado %f",array_list_percent_occupied(lista));
-
-  for(i=0;i<32;i++){
-    printf("%d\n",array_list_get(lista,i,&erro));
+*/
+  array_list_insert_at(lista,9,66);
+  
+  for(int j = 0;j<array_list_get_capacity(lista);j++){
+  printf("%d ", array_list_get(lista,j,&erro));
   }
 
   //printf("achou?: %d", array_list_find(lista,4));

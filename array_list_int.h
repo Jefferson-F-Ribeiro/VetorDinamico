@@ -121,4 +121,6 @@ double array_list_percent_occupied(array_list_int * list);
  */
 void array_list_destroy(array_list_int * list); 
 
+int array_list_get_capacity(array_list_int * list);
+
 #endif

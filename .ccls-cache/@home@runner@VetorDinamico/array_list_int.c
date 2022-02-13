@@ -35,6 +35,7 @@ int increase_memory(array_list_int *list){
 
   for(int i = 0; i<array_list_size(list); i++){
     new_list->data[i] = list->data[i];
+    array_list_insert_at(new_list,i,list->data[i]);
   }
 
   list->capacity = new_list->capacity;
@@ -71,6 +72,10 @@ int array_list_get(array_list_int * list, int index, int *error){
     return list->data[index];
 }
 
+int array_list_get_capacity(array_list_int * list){
+  return list->capacity;
+}
+
 
 unsigned int array_list_push_back(array_list_int * list, int value){
   if (list->capacity==list->size){
@@ -78,7 +83,7 @@ unsigned int array_list_push_back(array_list_int * list, int value){
       return array_list_size(list);
   }
   list->data[list->size] = value;
-  list->size++;
+
   return array_list_size(list);
 }
 
@@ -111,7 +116,13 @@ int array_list_find(array_list_int * list, int element){
  * \todo Implement function
  */
 unsigned int array_list_insert_at(array_list_int * list, int index, int value){
-    return array_list_size(list);
+  
+  if(index >= 0 && index < list->capacity){
+    printf("%d %d %d\n",index,list->capacity,list->size);
+    list->data[index] = value;
+    list->size++;
+  }
+  return array_list_size(list);
 }
 
 /**
@@ -143,5 +154,8 @@ double array_list_percent_occupied(array_list_int * list){
  * \todo Implement function
  */
 void array_list_destroy(array_list_int * list){
-  
+  for(int i=0;i<list->capacity;i++){
+    free(&list->data[i]);
+  }
+  free(list);
 }
