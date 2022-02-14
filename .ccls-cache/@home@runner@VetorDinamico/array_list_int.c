@@ -30,12 +30,12 @@ int increase_memory(array_list_int *list){
   
   array_list_int *new_list = (array_list_int*)malloc(sizeof(array_list_int));
   new_list->data = (int*)malloc(sizeof(int)*(list->capacity*2));
-  new_list->size = array_list_size(list);
-  new_list->capacity = list->capacity*2;
+  new_list->size = 0;
+  new_list->capacity = (list->capacity)*2;
 
   for(int i = 0; i<array_list_size(list); i++){
     new_list->data[i] = list->data[i];
-    array_list_insert_at(new_list,i,list->data[i]);
+    //array_list_push_back(new_list,list->data[i]);
   }
 
   list->capacity = new_list->capacity;
@@ -83,7 +83,7 @@ unsigned int array_list_push_back(array_list_int * list, int value){
       return array_list_size(list);
   }
   list->data[list->size] = value;
-
+  list->size++;
   return array_list_size(list);
 }
 
@@ -117,11 +117,14 @@ int array_list_find(array_list_int * list, int element){
  */
 unsigned int array_list_insert_at(array_list_int * list, int index, int value){
   
-  if(index >= 0 && index < list->capacity){
-    printf("%d %d %d\n",index,list->capacity,list->size);
+  if(index >= 0 && index < list->size){
     list->data[index] = value;
-    list->size++;
   }
+
+  if(index == list->size){
+    array_list_push_back(list,value);
+  }
+
   return array_list_size(list);
 }
 
