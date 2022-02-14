@@ -43,6 +43,13 @@ int main(void) {
 //  printf("achou?: %d", array_list_find(lista,4));
 //  printf("achou?: %d", array_list_find(lista,64)); 
 
-  printf("ocupado %.3f",array_list_percent_occupied(lista));
+  printf("ocupado %.3f\n",array_list_percent_occupied(lista));
+
+  array_list_remove_from(lista,3);
+
+  for(int j=0;j<16;j++){
+    printf("%d\n", array_list_get(lista,j,&erro));
+  }
+
   return 0;
 }

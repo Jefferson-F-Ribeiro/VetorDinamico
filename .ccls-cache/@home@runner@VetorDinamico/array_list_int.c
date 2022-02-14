@@ -131,6 +131,29 @@ unsigned int array_list_insert_at(array_list_int * list, int index, int value){
  * \todo Implement function
  */
 unsigned int array_list_remove_from(array_list_int * list, int index){
+
+  if(index>=0 && index <list->size){
+    array_list_int *new_list = (array_list_int*)malloc(sizeof(array_list_int));
+    new_list->data = (int*)malloc(sizeof(int)*(list->capacity));
+    new_list->size = 0;
+    new_list->capacity = (list->capacity);
+
+    for(int i=0; i<index;i++){
+      array_list_push_back(new_list,list->data[i]);
+      printf("adding: %d to the list\n",new_list->data[i]);
+    }
+
+    for(int i=index;i<list->size-1;i++){
+      array_list_push_back(new_list,list->data[i+1]);
+      printf("adding: %d to the list\n",new_list->data[i]);
+    }
+
+    free(list->data);
+    list->data = new_list->data;
+    new_list->data = NULL;
+       
+  }
+  
   return array_list_size(list);
 }
 
