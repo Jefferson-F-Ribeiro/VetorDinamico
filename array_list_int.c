@@ -88,6 +88,20 @@ unsigned int array_list_push_back(array_list_int * list, int value){
 
 
 unsigned int array_list_pop_back(array_list_int * list){
+
+    array_list_int *new_list = (array_list_int*)malloc(sizeof(array_list_int));
+    new_list->data = (int*)malloc(sizeof(int)*(list->capacity));
+    new_list->size = 0;
+    new_list->capacity = (list->capacity);
+  
+  for(int i = 0; i<list->size-1;i++){
+    array_list_push_back(new_list,list->data[i]);
+  }
+
+    free(list->data);
+    list->data = new_list->data;
+    new_list->data = NULL;
+
   return array_list_size(list);
 }
 
@@ -132,6 +146,8 @@ unsigned int array_list_insert_at(array_list_int * list, int index, int value){
  */
 unsigned int array_list_remove_from(array_list_int * list, int index){
 
+  printf("removing %d\n", index);
+  printf("%d\n",list->size);
   if(index>=0 && index <list->size){
     array_list_int *new_list = (array_list_int*)malloc(sizeof(array_list_int));
     new_list->data = (int*)malloc(sizeof(int)*(list->capacity));
@@ -151,8 +167,14 @@ unsigned int array_list_remove_from(array_list_int * list, int index){
     free(list->data);
     list->data = new_list->data;
     new_list->data = NULL;
-       
+
   }
+
+  if(index == 8){
+    array_list_pop_back(list);
+  }
+
+  list->size--;
   
   return array_list_size(list);
 }

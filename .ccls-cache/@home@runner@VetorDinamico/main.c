@@ -29,15 +29,12 @@ int main(void) {
   }
 
   increase_memory(lista);
-  printf("ocupado %f",array_list_percent_occupied(lista));
+  printf("ocupado %f\n",array_list_percent_occupied(lista));
 
-  array_list_insert_at(lista,2,66);
-  array_list_push_back(lista,999);
-  array_list_insert_at(lista,9,107);
+  //array_list_insert_at(lista,2,66);
+  //array_list_push_back(lista,999);
+ // array_list_insert_at(lista,9,107);
 
-  for(int j=0;j<16;j++){
-  printf("%d\n", array_list_get(lista,j,&erro));
-  }
   
 //  printf("%d\n",array_list_get(lista,10,&erro));
 //  printf("achou?: %d", array_list_find(lista,4));
@@ -46,6 +43,12 @@ int main(void) {
   printf("ocupado %.3f\n",array_list_percent_occupied(lista));
 
   array_list_remove_from(lista,3);
+
+  for(int j=0;j<16;j++){
+    printf("%d\n", array_list_get(lista,j,&erro));
+  }
+
+  array_list_remove_from(lista,8);
 
   for(int j=0;j<16;j++){
     printf("%d\n", array_list_get(lista,j,&erro));
