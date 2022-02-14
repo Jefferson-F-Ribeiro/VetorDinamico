@@ -40,7 +40,9 @@ int main(void) {
   }
   
 //  printf("%d\n",array_list_get(lista,10,&erro));
-  //printf("achou?: %d", array_list_find(lista,4));
-  //printf("achou?: %d", array_list_find(lista,64)); 
+//  printf("achou?: %d", array_list_find(lista,4));
+//  printf("achou?: %d", array_list_find(lista,64)); 
+
+  printf("ocupado %.3f",array_list_percent_occupied(lista));
   return 0;
 }

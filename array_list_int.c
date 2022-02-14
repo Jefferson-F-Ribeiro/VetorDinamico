@@ -35,7 +35,6 @@ int increase_memory(array_list_int *list){
 
   for(int i = 0; i<array_list_size(list); i++){
     new_list->data[i] = list->data[i];
-    //array_list_push_back(new_list,list->data[i]);
   }
 
   list->capacity = new_list->capacity;
